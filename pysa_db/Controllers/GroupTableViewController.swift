@@ -337,6 +337,8 @@ extension GroupTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = .gray
         (view as! UITableViewHeaderFooterView).textLabel?.textColor = UIColor.systemTeal
+        (view as! UITableViewHeaderFooterView).textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        
     }
 
     
