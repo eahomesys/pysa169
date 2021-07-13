@@ -1,6 +1,6 @@
 # Global files
 .DS_Store
-GoogleService-Info.plist
+/pysa_db/GoogleService-Info.plist
 
 # Xcode
 #
