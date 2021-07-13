@@ -20,6 +20,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Sacrament Program"
         let url = URL(string: "https://docs.google.com/document/d/19VPgedHzorjvxQMjr6veAxNVzWLYArj_L7q4FmSOrEM/edit?usp=sharing")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = false

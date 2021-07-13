@@ -20,6 +20,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
     let db = Firestore.firestore()
     private let storage = Storage.storage().reference()
     
+
     var members: [MemberModel] = []
     var image: UIImage = UIImage(named: "picture")!
     
