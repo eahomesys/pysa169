@@ -325,7 +325,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
-                                let indexPath = IndexPath(row: 0, section: 0)
+                                let indexPath = IndexPath(row: self.members.count - 1, section: 0)
                                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             }
                             
@@ -382,6 +382,7 @@ extension MemberViewController: UITableViewDataSource {
                 image = UIImage(data: data)!
                 cell.avatarView.makeRounded()
                 cell.avatarView.image = image
+              
             }
         }
         task.resume()
@@ -414,6 +415,7 @@ extension MemberViewController: UITableViewDelegate {
                 DispatchQueue.main.async { [self] in
                     image = UIImage(data: data)!
                     vc.imageView.image = image
+                    self.tableView.reloadData()
                 }
             }
             task.resume()
