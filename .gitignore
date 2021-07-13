@@ -1,6 +1,7 @@
 
 # Global files
 .DS_Store
+GoogleService-Info.plist
 
 # Xcode
 #
