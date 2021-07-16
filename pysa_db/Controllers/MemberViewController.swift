@@ -165,7 +165,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
         
         query.addSnapshotListener { [self] querySnapshot, error in
         //db.collection(K.FStore.collectionName).whereField(K.FStore.Status, isEqualTo: "Current").order(by: filter).addSnapshotListener { [self] querySnapshot, error in
-            self.member.members = []
+            self.members = []
             if let e = error {
                 print("There was an issue retreiving data from Firestore, \(e)")
             } else {
@@ -203,7 +203,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
                         
                            {
                             let newMember = MemberModel(FirstName: FirstName, LastName: LastName, Address: Address, Apt_no: Apt_no, Email: Email, Phone: Phone, PictureURL: PictureURL, BirthDate: BirthDate, Status: Status, Gender: Gender, WhereFrom: WhereFrom, School: School, Major: Major, Employment: Employment, MissionLocation: MissionLocation, SecondLang: SecondLang, Org: Org, Committee: Committee, Calling: Calling, HEGroup: HEGroup, Emergency: Emergency, Notes: Notes, Ward: Ward, Engaged: Engaged, Fiance: Fiance, MarriageDate: MarriageDate)
-                            self.member.members.append(newMember)
+                            self.members.append(newMember)
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -231,7 +231,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
 
 extension MemberViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return member.members.count
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -239,18 +239,18 @@ extension MemberViewController: UITableViewDataSource {
         
         
         if filter == "FirstName" {
-            cell.nameLabel?.text = "\(member.members[indexPath.row].FirstName) \(member.members[indexPath.row].LastName)"
+            cell.nameLabel?.text = "\(members[indexPath.row].FirstName) \(members[indexPath.row].LastName)"
         } else {
-            cell.nameLabel?.text = "\(member.members[indexPath.row].LastName) \(member.members[indexPath.row].FirstName)"
+            cell.nameLabel?.text = "\(members[indexPath.row].LastName) \(members[indexPath.row].FirstName)"
         }
         
-        cell.addressLabel?.text = "\(member.members[indexPath.row].Address) \(member.members[indexPath.row].Apt_no)"
-        cell.phoneLabel?.text = "\(member.members[indexPath.row].Phone)"
-        cell.emailLabel?.text = "\(member.members[indexPath.row].Email)"
-        cell.callingLabel.text = "HE Group:\(member.members[indexPath.row].HEGroup) Committee:\(member.members[indexPath.row].Committee)"
+        cell.addressLabel?.text = "\(members[indexPath.row].Address) \(members[indexPath.row].Apt_no)"
+        cell.phoneLabel?.text = "\(members[indexPath.row].Phone)"
+        cell.emailLabel?.text = "\(members[indexPath.row].Email)"
+        cell.callingLabel.text = "HE Group:\(members[indexPath.row].HEGroup) Committee:\(members[indexPath.row].Committee)"
         //print(members[indexPath.row].PictureURL)
         
-        guard let url = URL(string: member.members[indexPath.row].PictureURL) else {
+        guard let url = URL(string: members[indexPath.row].PictureURL) else {
             cell.avatarView.image = image
             return cell
         }
