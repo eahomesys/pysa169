@@ -426,12 +426,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Counselor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmN-h1-SFD">
-                                <rect key="frame" x="20" y="244.5" width="120" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second Counselor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKm-RG-zqW">
                                 <rect key="frame" x="20" y="299.5" width="145" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -568,6 +562,12 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Counselor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmN-h1-SFD">
+                                <rect key="frame" x="20" y="256" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vNu-iL-lKQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -596,7 +596,7 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                             <constraint firstItem="l2d-VL-u9u" firstAttribute="firstBaseline" secondItem="qHg-tG-edH" secondAttribute="firstBaseline" id="F7s-bA-hK3"/>
                             <constraint firstItem="vND-BG-DaK" firstAttribute="leading" secondItem="CmN-h1-SFD" secondAttribute="leading" id="GgB-t1-tvE"/>
                             <constraint firstItem="ijR-ny-YUN" firstAttribute="leading" secondItem="Gfe-Hf-wPa" secondAttribute="leading" id="GrL-dQ-2Zg"/>
-                            <constraint firstItem="TKm-RG-zqW" firstAttribute="top" secondItem="CmN-h1-SFD" secondAttribute="bottom" constant="34" id="HTC-7F-Vvo"/>
+                            <constraint firstItem="TKm-RG-zqW" firstAttribute="top" secondItem="CmN-h1-SFD" secondAttribute="bottom" constant="22.5" id="HTC-7F-Vvo"/>
                             <constraint firstItem="N2A-Jg-Iqr" firstAttribute="top" secondItem="zmP-OJ-Q0a" secondAttribute="bottom" constant="24" id="HWW-ov-Uzs"/>
                             <constraint firstItem="qjC-2E-m3a" firstAttribute="trailing" secondItem="GuU-E8-qWe" secondAttribute="trailing" id="JYr-AP-PgS"/>
                             <constraint firstItem="qHg-tG-edH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="l2d-VL-u9u" secondAttribute="trailing" constant="8" symbolic="YES" id="MNT-xp-ZgL"/>
@@ -631,7 +631,7 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                             <constraint firstItem="IAd-60-Rst" firstAttribute="leading" secondItem="ijR-ny-YUN" secondAttribute="leading" id="pNs-qc-jDG"/>
                             <constraint firstItem="Gfe-Hf-wPa" firstAttribute="trailing" secondItem="qjC-2E-m3a" secondAttribute="trailing" id="pRd-rx-IWL"/>
                             <constraint firstItem="jj5-fq-wJx" firstAttribute="leading" secondItem="O4v-13-Elt" secondAttribute="leading" id="qO8-a0-vkG"/>
-                            <constraint firstItem="CmN-h1-SFD" firstAttribute="top" secondItem="vND-BG-DaK" secondAttribute="bottom" constant="8" id="qip-IH-SGB"/>
+                            <constraint firstItem="CmN-h1-SFD" firstAttribute="top" secondItem="vND-BG-DaK" secondAttribute="bottom" constant="19.5" id="qip-IH-SGB"/>
                             <constraint firstItem="GuU-E8-qWe" firstAttribute="top" secondItem="Gfe-Hf-wPa" secondAttribute="bottom" constant="34" id="rfe-HD-tAY"/>
                             <constraint firstItem="vND-BG-DaK" firstAttribute="top" secondItem="jyZ-9g-myB" secondAttribute="bottom" constant="8" id="sWR-Ed-IwS"/>
                             <constraint firstItem="uo2-xc-GeC" firstAttribute="top" secondItem="Bdb-J9-qc0" secondAttribute="bottom" constant="8" id="tTU-af-1mf"/>
@@ -644,6 +644,17 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PqJ-bP-dua"/>
+                    <connections>
+                        <outlet property="bishopLabel" destination="ijR-ny-YUN" id="iOw-yd-v21"/>
+                        <outlet property="execSecLabel" destination="GuU-E8-qWe" id="k6U-1k-hqz"/>
+                        <outlet property="firstCounselorLabel" destination="Gfe-Hf-wPa" id="KmH-GP-Msm"/>
+                        <outlet property="meetingLocationLabel" destination="K4I-Wb-PFs" id="Rek-cv-RcB"/>
+                        <outlet property="sacramentLabel" destination="qHg-tG-edH" id="xxm-Dc-cCp"/>
+                        <outlet property="secondCounselorLabel" destination="qjC-2E-m3a" id="X3h-cz-KeG"/>
+                        <outlet property="stakeLabel" destination="IAd-60-Rst" id="kvF-12-4UJ"/>
+                        <outlet property="wardClerkLabel" destination="Y0J-5Z-fty" id="OUB-Fw-kN9"/>
+                        <outlet property="wardLabel" destination="MfZ-Ck-XEt" id="ZMK-yK-9Yo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L90-bJ-8ou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
