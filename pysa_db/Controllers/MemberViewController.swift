@@ -20,8 +20,8 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
     let db = Firestore.firestore()
     private let storage = Storage.storage().reference()
     
-    //var members: [MemberModel] = []
-    let member = Ward()
+
+    var members: [MemberModel] = []
     var image: UIImage = UIImage(named: "picture")!
     
     override func viewDidLoad() {
@@ -207,7 +207,7 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
-                                let indexPath = IndexPath(row: 0, section: 0)
+                                let indexPath = IndexPath(row: self.members.count - 1, section: 0)
                                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             }
                         }
@@ -263,13 +263,13 @@ extension MemberViewController: UITableViewDataSource {
             
             
             DispatchQueue.main.async { [self] in
-                self.image = UIImage(data: data) ?? image
+                image = UIImage(data: data)!
                 cell.avatarView.makeRounded()
                 cell.avatarView.image = image
+              
             }
         }
         task.resume()
-        
         return cell
     }
     
@@ -283,9 +283,9 @@ extension MemberViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: K.MemberDetailSegue) as? MemberDetailViewController {
-            vc.members = member.members[indexPath.row]
+            vc.members = members[indexPath.row]
             
-            guard let url = URL(string: member.members[indexPath.row].PictureURL) else {
+            guard let url = URL(string: members[indexPath.row].PictureURL) else {
                 vc.imageView.image = image
                 return
             }
@@ -298,6 +298,7 @@ extension MemberViewController: UITableViewDelegate {
                 DispatchQueue.main.async { [self] in
                     image = UIImage(data: data)!
                     vc.imageView.image = image
+                    self.tableView.reloadData()
                 }
             }
             task.resume()
@@ -317,7 +318,7 @@ extension MemberViewController: UITableViewDelegate {
         if (editingStyle == UITableViewCell.EditingStyle.delete) {
 
             // 1. Delete the member from the Firestore database
-            let name = "\(member.members[indexPath.row].LastName) \(member.members[indexPath.row].FirstName)"
+            let name = "\(members[indexPath.row].LastName) \(members[indexPath.row].FirstName)"
             
             
             db.collection(K.FStore.collectionName).document(name).delete() { err in
@@ -327,9 +328,11 @@ extension MemberViewController: UITableViewDelegate {
                     print("Document successfully removed!")
                 }
             }
+            
+
 
             // 2. Now remove from TableView
-            member.members.remove(at: indexPath.row)
+            members.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
 
         }

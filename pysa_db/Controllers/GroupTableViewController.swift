@@ -36,16 +36,37 @@ class GroupTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("filter: \(filter)")
-        title = filter
+        title = filter // need to change the title to more verbose version
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         if (filter == "Calling") {
+            title = "Leadership"
             orgLeadership()
         }
         else if (filter == "Address")  {
+            title = "Apartments"
             apartmentList()
         }
         else {
+            // need to change the title to more verbose version
+            if(filter == "Major"){
+                title = "Field of Study"
+            }
+            else if(filter == "SecondLang"){
+                title = "Languages"
+            }
+            else if(filter == "MissionLocation"){
+                title = "Missions"
+            }
+            else if(filter == "HEGroup"){
+                title = "Home Evening Groups"
+            }
+            else if (filter == "Org") {
+                title = "EQ-RS Membership"
+            }
+            else if (filter == "Committee") {
+                title = "Committees"
+            }
             loadMessages()
         }
     }
