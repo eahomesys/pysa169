@@ -12,6 +12,7 @@
 		2A96F0AC2694002B0006410E /* MissLangModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A96F0AB2694002B0006410E /* MissLangModel.swift */; };
 		2AB1B368269C9E8E00A26114 /* WardStakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1B367269C9E8E00A26114 /* WardStakeViewController.swift */; };
 		2AB1B36A269CA76C00A26114 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1B369269CA76C00A26114 /* WebViewController.swift */; };
+		2AB1B39526A0FC5100A26114 /* WardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1B39426A0FC5100A26114 /* WardModel.swift */; };
 		2AD38D34268A34550078ACE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AD38D33268A34550078ACE6 /* GoogleService-Info.plist */; };
 		2AD38D36268A50440078ACE6 /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD38D35268A50440078ACE6 /* MemberModel.swift */; };
 		2AD38D39268A5A5B0078ACE6 /* MemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD38D37268A5A5B0078ACE6 /* MemberCell.swift */; };
@@ -39,6 +40,7 @@
 		2A96F0AB2694002B0006410E /* MissLangModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissLangModel.swift; sourceTree = "<group>"; };
 		2AB1B367269C9E8E00A26114 /* WardStakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardStakeViewController.swift; sourceTree = "<group>"; };
 		2AB1B369269CA76C00A26114 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		2AB1B39426A0FC5100A26114 /* WardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardModel.swift; sourceTree = "<group>"; };
 		2AD38D33268A34550078ACE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AD38D35268A50440078ACE6 /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		2AD38D37268A5A5B0078ACE6 /* MemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				2AD38D35268A50440078ACE6 /* MemberModel.swift */,
 				2A96F0AB2694002B0006410E /* MissLangModel.swift */,
+				2AB1B39426A0FC5100A26114 /* WardModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				2A96F0A626935DED0006410E /* MenuViewController.swift in Sources */,
 				2AB1B368269C9E8E00A26114 /* WardStakeViewController.swift in Sources */,
 				2AD38D39268A5A5B0078ACE6 /* MemberCell.swift in Sources */,
+				2AB1B39526A0FC5100A26114 /* WardModel.swift in Sources */,
 				2ADED9932688102400C19B86 /* SceneDelegate.swift in Sources */,
 				2ADED9AE2688365500C19B86 /* Constants.swift in Sources */,
 				2A96F0AC2694002B0006410E /* MissLangModel.swift in Sources */,

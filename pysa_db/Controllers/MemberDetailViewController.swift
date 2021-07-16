@@ -74,7 +74,7 @@ class MemberDetailViewController: UIViewController {
         notesText.text = members?.Notes
         
         
-        print(members ?? "empty")
+        //print(members ?? "empty")
         
     }
     @IBAction func EditPressed(_ sender: UIBarButtonItem) {
