@@ -50,7 +50,34 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     var urlString: String?
     var pgTitle: String?
     var ward = "169"
+    
+    var callingSelection: String?
+    var callingList = ["None", "Bishop", "President", "First Counselor", "Second Counselor", "Secretary", "Teacher", "Co-chair", "Executive Secretary", "Asst Executive Secretary", "Group Leader", "Ordinance Worker", "Consultant-Family History", "Temple Prep Teacher", "Ward Temple and Family History Leader", "Ward Mission Leader", "Asst Ward Mission Leader", "Ward Clerk", "Ward Clerk-Membership", "Ward Clerk-Finance", "Ministering Secretary", "Service Coordinator", "Activities Coordinator", "Sacrament Coordinator", "Music Chairman", "Music Director", "Choir Director", "Pianist", "Chorister", "Ward Employment Specialist", "Ward Missionary", "Member"]
 
+    var committeeSelection: String?
+    var committeeList = ["None", "PEC","Home Evening Committee","Institute Committee","Sunday School","Temple and Family History Committee","Publicity Committee","Music Committee", "Self Reliance Committee" ,"Missionary Committee","Service Committee","Activities Committee","Elders Quorum 1","Elders Quorum 2","Relief Society 1","Relief Society 2"]
+
+    var addressSelection: String?
+    var addressList = ["None", "BDA","L on 8th","Old Academy"]
+    
+    var statusSelection: String?
+    var statusList = ["Current", "Past"]
+    
+    var genderSelection: String?
+    var genderList = ["F", "M"]
+    
+    var schoolSelection: String?
+    var schoolList = ["None", "BYU", "UVU", "Other"]
+    
+    var orgSelection: String?
+    var orgList = ["None","Elders Quorum 1","Elders Quorum 2","Relief Society 1","Relief Society 2"]
+    
+    var heSelection: String?
+    var heList = ["None", "1","2","3","4","5","6"]
+    
+    var engagedSelection: String?
+    var engagedList = ["Yes", "No"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.urlString = " "
@@ -63,6 +90,8 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
         
         setButtons()
         
+        createPickerView()
+        dismissPickerView()
     }
     
     func fillTextFields() {
@@ -290,5 +319,147 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    func createPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        callingTextField.inputView = pickerView
+        committeeTextField.inputView = pickerView
+        addressTextField.inputView = pickerView
+        statusTextField.inputView = pickerView
+        genderTextField.inputView = pickerView
+        schoolTextField.inputView = pickerView
+        orgTextField.inputView = pickerView
+        hegroupTextField.inputView = pickerView
+        engagedTextField.inputView = pickerView
+        
+    }
+    
+    func dismissPickerView() {
+       let toolBar = UIToolbar()
+       toolBar.sizeToFit()
+       let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+       toolBar.setItems([button], animated: true)
+       toolBar.isUserInteractionEnabled = true
+        callingTextField.inputAccessoryView = toolBar
+        committeeTextField.inputAccessoryView = toolBar
+        addressTextField.inputAccessoryView = toolBar
+        statusTextField.inputAccessoryView = toolBar
+        genderTextField.inputAccessoryView = toolBar
+        schoolTextField.inputAccessoryView = toolBar
+        orgTextField.inputAccessoryView = toolBar
+        hegroupTextField.inputAccessoryView = toolBar
+        engagedTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc func action() {
+          view.endEditing(true)
+    }
 
+}
+
+extension EditMemberViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if (self.committeeTextField.isEditing == true) {
+            return committeeList.count
+        }
+        else if (self.addressTextField.isEditing == true) {
+            return addressList.count
+        }
+        else if (self.statusTextField.isEditing == true) {
+            return statusList.count
+        }
+        else if (self.genderTextField.isEditing == true) {
+            return genderList.count
+        }
+        else if (self.schoolTextField.isEditing == true) {
+            return schoolList.count
+        }
+        else if (self.orgTextField.isEditing == true) {
+            return orgList.count
+        }
+        else if (self.hegroupTextField.isEditing == true) {
+            return heList.count
+        }
+        else if (self.engagedTextField.isEditing == true) {
+            return engagedList.count
+        }
+        else {
+            return callingList.count
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (self.committeeTextField.isEditing == true) {
+            return committeeList[row]
+        }
+        else if (self.addressTextField.isEditing == true) {
+            return addressList[row]
+        }
+        else if (self.statusTextField.isEditing == true) {
+            return statusList[row]
+        }
+        else if (self.genderTextField.isEditing == true) {
+            return genderList[row]
+        }
+        else if (self.schoolTextField.isEditing == true) {
+            return schoolList[row]
+        }
+        else if (self.orgTextField.isEditing == true) {
+            return orgList[row]
+        }
+        else if (self.hegroupTextField.isEditing == true) {
+            return heList[row]
+        }
+        else if (self.engagedTextField.isEditing == true) {
+            return engagedList[row]
+        }
+        else {
+            return callingList[row]
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (self.committeeTextField.isEditing == true) {
+            committeeSelection = committeeList[row]
+            committeeTextField.text = committeeSelection
+        }
+        else if (self.addressTextField.isEditing == true) {
+            addressSelection = addressList[row]
+            addressTextField.text = addressSelection
+        }
+        else if (self.statusTextField.isEditing == true) {
+            statusSelection = statusList[row]
+            statusTextField.text = statusSelection
+        }
+        else if (self.genderTextField.isEditing == true) {
+            genderSelection = genderList[row]
+            genderTextField.text = genderSelection
+        }
+        else if (self.schoolTextField.isEditing == true) {
+            schoolSelection = schoolList[row]
+            schoolTextField.text = schoolSelection
+        }
+        else if (self.orgTextField.isEditing == true) {
+            orgSelection = orgList[row]
+            orgTextField.text = orgSelection
+        }
+        else if (self.hegroupTextField.isEditing == true) {
+            heSelection = heList[row]
+            hegroupTextField.text = heSelection
+        }
+        else if (self.engagedTextField.isEditing == true) {
+            engagedSelection = engagedList[row]
+            engagedTextField.text = engagedSelection
+        }
+        else {
+            callingSelection = callingList[row]
+            callingTextField.text = callingSelection
+        }
+    }
 }
