@@ -207,6 +207,8 @@ class GroupTableViewController: UIViewController {
             }
         } // end closure
     }
+    
+
 }
 
 
@@ -246,6 +248,21 @@ extension GroupTableViewController: UITableViewDataSource {
         //print("indexPath.section: \(indexPath.section)")
         //print("indexPath.row: \(indexPath.row)")
         cell.imageView?.image = image
+        if Auth.auth().currentUser != nil{
+                //let store = Storage.storage()
+            let url = "\(items[indexPath.section][indexPath.row].PictureURL)"
+            
+            let Ref = Storage.storage().reference(forURL: url)
+            Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Could not download file")
+                } else {
+                    cell.imageView?.image = UIImage(data: data!)
+                    cell.imageView?.makeRounded()
+                }
+            }
+        }
+        
         cell.textLabel?.textColor = .black
         
         if(filter == "Calling") {
@@ -257,27 +274,6 @@ extension GroupTableViewController: UITableViewDataSource {
         else {
             cell.textLabel?.text = "\(self.items[indexPath.section][indexPath.row].LastName) \(self.items[indexPath.section][indexPath.row].FirstName)"
         }
-            
-        
-            
-
-        guard let url = URL(string: items[indexPath.section][indexPath.row].PictureURL) else {
-            cell.imageView?.image = image
-            return cell
-        }
-
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-
-            DispatchQueue.main.async { [self] in
-                image = UIImage(data: data)!
-                cell.imageView?.makeRounded()
-                cell.imageView?.image = image
-            }
-        }
-        task.resume()
         
         return cell
     }

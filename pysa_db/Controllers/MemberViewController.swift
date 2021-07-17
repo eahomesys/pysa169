@@ -237,6 +237,20 @@ extension MemberViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MemberCell
         
+        if Auth.auth().currentUser != nil{
+                //let store = Storage.storage()
+            let url = "\(members[indexPath.row].PictureURL)"
+            
+            let Ref = Storage.storage().reference(forURL: url)
+            Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if error != nil {
+                    print("Error: Could not download file")
+                } else {
+                    cell.avatarView?.image = UIImage(data: data!)
+                    cell.avatarView?.makeRounded()
+                }
+            }
+        }
         
         if filter == "FirstName" {
             cell.nameLabel?.text = "\(members[indexPath.row].FirstName) \(members[indexPath.row].LastName)"
@@ -248,28 +262,7 @@ extension MemberViewController: UITableViewDataSource {
         cell.phoneLabel?.text = "\(members[indexPath.row].Phone)"
         cell.emailLabel?.text = "\(members[indexPath.row].Email)"
         cell.callingLabel.text = "HE Group:\(members[indexPath.row].HEGroup) Committee:\(members[indexPath.row].Committee)"
-        //print(members[indexPath.row].PictureURL)
-        
-        guard let url = URL(string: members[indexPath.row].PictureURL) else {
-            cell.avatarView.image = image
-            return cell
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            
-            
-            
-            DispatchQueue.main.async { [self] in
-                image = UIImage(data: data)!
-                cell.avatarView.makeRounded()
-                cell.avatarView.image = image
-              
-            }
-        }
-        task.resume()
+
         return cell
     }
     
@@ -285,23 +278,20 @@ extension MemberViewController: UITableViewDelegate {
         if let vc = storyboard?.instantiateViewController(withIdentifier: K.MemberDetailSegue) as? MemberDetailViewController {
             vc.members = members[indexPath.row]
             
-            guard let url = URL(string: members[indexPath.row].PictureURL) else {
-                vc.imageView.image = image
-                return
-            }
             
-            let task = URLSession.shared.dataTask(with: url) { data, _, error in
-                guard let data = data, error == nil else {
-                    return
-                }
+            if Auth.auth().currentUser != nil{
+                    //let store = Storage.storage()
+                let url = "\(members[indexPath.row].PictureURL)"
                 
-                DispatchQueue.main.async { [self] in
-                    image = UIImage(data: data)!
-                    vc.imageView.image = image
-                    self.tableView.reloadData()
+                let Ref = Storage.storage().reference(forURL: url)
+                Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                    if error != nil {
+                        print("Error: Could not download file")
+                    } else {
+                        vc.imageView.image = UIImage(data: data!)
+                    }
                 }
             }
-            task.resume()
             
             
             navigationController?.pushViewController(vc, animated: true)
