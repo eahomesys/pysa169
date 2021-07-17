@@ -92,6 +92,9 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
         
         createPickerView()
         dismissPickerView()
+        
+        self.birthdateTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone1)) //1
+        self.marriageTextField.setInputViewDatePicker(target: self, selector: #selector(tapDone2)) //1
     }
     
     func fillTextFields() {
@@ -355,6 +358,31 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     @objc func action() {
           view.endEditing(true)
     }
+    
+    //2
+    @objc func tapDone1() {
+        
+        if let datePicker = self.birthdateTextField.inputView as? UIDatePicker { // 2-1
+            let dateformatter = DateFormatter() // 2-2
+            dateformatter.dateFormat = "dd MMM yyyy"
+            //dateformatter.dateStyle = .medium // 2-3
+            self.birthdateTextField.text = dateformatter.string(from: datePicker.date) //2-4
+            
+        }
+        self.birthdateTextField.resignFirstResponder() // 2-5
+    }
+    
+    @objc func tapDone2() {
+        if let datePicker = self.marriageTextField.inputView as? UIDatePicker { // 2-1
+            let dateformatter = DateFormatter() // 2-2
+            dateformatter.dateFormat = "dd MMM yyyy"
+            //dateformatter.dateStyle = .medium // 2-3
+            self.marriageTextField.text = dateformatter.string(from: datePicker.date) //2-4
+            
+        }
+        self.marriageTextField.resignFirstResponder() // 2-5
+    }
+            
 
 }
 
@@ -462,4 +490,33 @@ extension EditMemberViewController: UIPickerViewDelegate, UIPickerViewDataSource
             callingTextField.text = callingSelection
         }
     }
+}
+
+extension UITextField {
+    
+    func setInputViewDatePicker(target: Any, selector: Selector) {
+        // Create a UIDatePicker object and assign to inputView
+        let screenWidth = UIScreen.main.bounds.width
+        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
+        datePicker.datePickerMode = .date //2
+        // iOS 14 and above
+        if #available(iOS 14, *) {// Added condition for iOS 14
+          datePicker.preferredDatePickerStyle = .wheels
+          datePicker.sizeToFit()
+        }
+        self.inputView = datePicker //3
+        
+        // Create a toolbar and assign it to inputAccessoryView
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel)) // 6
+        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector) //7
+        toolBar.setItems([cancel, flexible, barButton], animated: false) //8
+        self.inputAccessoryView = toolBar //9
+    }
+    
+    @objc func tapCancel() {
+        self.resignFirstResponder()
+    }
+    
 }
