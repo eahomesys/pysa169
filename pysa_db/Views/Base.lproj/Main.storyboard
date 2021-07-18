@@ -36,18 +36,18 @@
                                 <rect key="frame" x="79" y="126" width="256" height="256"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAx-BL-PQi" userLabel="EmailView">
-                                <rect key="frame" x="-44" y="435" width="502" height="177"/>
+                                <rect key="frame" x="-22" y="435" width="458" height="177"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ericwbanderson@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-JX-tuE" userLabel="Email Textfield">
-                                        <rect key="frame" x="76" y="51" width="334" height="45"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-JX-tuE" userLabel="Email Textfield">
+                                        <rect key="frame" x="76" y="51" width="290" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="290" id="qsm-DU-lvL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="IWillGoAndDo" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZV-xA-Iqf" userLabel="Password Textfield">
-                                        <rect key="frame" x="76" y="124" width="334" height="45"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZV-xA-Iqf" userLabel="Password Textfield">
+                                        <rect key="frame" x="76" y="124" width="290" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
