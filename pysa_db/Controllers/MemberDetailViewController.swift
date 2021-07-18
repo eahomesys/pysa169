@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class MemberDetailViewController: UIViewController {
     @IBOutlet weak var navigationTitle: UINavigationItem!
@@ -37,12 +38,27 @@ class MemberDetailViewController: UIViewController {
     @IBOutlet weak var marriageText: UILabel!
     @IBOutlet weak var emergencyText: UILabel!
     @IBOutlet weak var notesText: UILabel!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var members: MemberModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         notesText.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        
+        let user = Auth.auth().currentUser
+        //if let user = user {
+        let userName = user?.email
+        //}
+        
+        if (userName == "admin@pysa.com")
+         {
+            editButton.isEnabled = true
+        } else if members?.Email != userName {
+            editButton.isEnabled = false
+        } else {
+            editButton.isEnabled = true
+        }
         
         // add code here
         self.title = "\(members!.LastName) \(members!.FirstName)"
@@ -78,13 +94,17 @@ class MemberDetailViewController: UIViewController {
         
     }
     @IBAction func EditPressed(_ sender: UIBarButtonItem) {
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: K.EditMemberSegue) as? EditMemberViewController {
             vc.members = members
             vc.myImage = imageView.image
             vc.pgTitle = "Edit"
             navigationController?.pushViewController(vc, animated: true)
         }
+        
     }
     
 }
+
+
 

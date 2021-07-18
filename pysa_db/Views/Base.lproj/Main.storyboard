@@ -672,7 +672,7 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration" allowsAirPlayForMediaPlayback="NO" allowsPictureInPictureMediaPlayback="NO">
-                                    <dataDetectorTypes key="dataDetectorTypes"/>
+                                    <dataDetectorTypes key="dataDetectorTypes" none="YES"/>
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences" javaScriptEnabled="NO"/>
                                 </wkWebViewConfiguration>
@@ -1214,6 +1214,7 @@ For appointments with the Stake Presidency, text your name, ward number (169th),
                         <outlet property="birthDateText" destination="jAo-wr-4Zb" id="j4x-XI-LCF"/>
                         <outlet property="callingText" destination="b7f-eZ-VPA" id="uQ7-EF-DFC"/>
                         <outlet property="committeeText" destination="M3w-6V-LUJ" id="VEa-ci-CDf"/>
+                        <outlet property="editButton" destination="2q9-eE-feQ" id="cSg-HF-4Fp"/>
                         <outlet property="emailAddrText" destination="wYk-pu-1dA" id="pIP-D8-LFl"/>
                         <outlet property="emergencyText" destination="7c8-ZV-rdF" id="tUh-36-rv2"/>
                         <outlet property="employmentText" destination="9k1-ca-jhi" id="GcY-7A-miu"/>

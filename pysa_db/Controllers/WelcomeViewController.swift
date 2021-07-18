@@ -45,7 +45,11 @@ class WelcomeViewController: UIViewController {
                     
                 } else {
                     //Navigate to the LoginViewController
-                    let myAlert = UIAlertController(title: "Success", message: "You have successfully logged in!", preferredStyle: UIAlertController.Style.alert)
+                    let user = Auth.auth().currentUser
+                    //if let user = user {
+                    let userName = user?.email
+                    //}
+                    let myAlert = UIAlertController(title: "Success", message: "\(String(describing: userName)), You have successfully logged in!", preferredStyle: UIAlertController.Style.alert)
                     let myOKAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { _ in
                         self!.performSegue(withIdentifier: K.loginSegue, sender: self)
                     }
