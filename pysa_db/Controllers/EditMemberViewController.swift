@@ -61,10 +61,10 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     var addressList = ["None", "BDA","L on 8th","Old Academy"]
     
     var statusSelection: String?
-    var statusList = ["Current", "Past"]
+    var statusList = ["Select", "Current", "Past"]
     
     var genderSelection: String?
-    var genderList = ["F", "M"]
+    var genderList = ["Select", "F", "M"]
     
     var schoolSelection: String?
     var schoolList = ["None", "BYU", "UVU", "Other"]
@@ -76,7 +76,7 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     var heList = ["None", "1","2","3","4","5","6"]
     
     var engagedSelection: String?
-    var engagedList = ["Yes", "No"]
+    var engagedList = ["Select", "Yes", "No"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +133,7 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
     
     func setButtons() {
         self.doneBtn.isEnabled = true
-        self.doneBtn.tintColor = UIColor.systemTeal
+        self.doneBtn.tintColor = UIColor.systemBlue
         self.uploadBtn.isEnabled = false
         self.uploadBtn.tintColor = UIColor.clear
     }
@@ -251,7 +251,7 @@ class EditMemberViewController: UIViewController, UIImagePickerControllerDelegat
                         //self.navigationController?.popViewController(animated: true)
                         self.navigationItem.rightBarButtonItems?.remove(at: 0)
                         self.uploadBtn.isEnabled = true
-                        self.uploadBtn.tintColor = UIColor.systemTeal
+                        self.uploadBtn.tintColor = UIColor.systemBlue
                     }
                     myAlert.addAction(myOKAction)
                     self.present(myAlert, animated: true, completion: nil)

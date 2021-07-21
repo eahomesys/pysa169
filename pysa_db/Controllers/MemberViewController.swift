@@ -28,8 +28,8 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
         super.viewDidLoad()
         
         self.title = "Directory"
-        let menu = MenuViewController(with: SideMenuItem.allCases)
         
+        let menu = MenuViewController(with: SideMenuItem.allCases)
         menu.delegate = self
         
         sideMenu = SideMenuNavigationController(rootViewController: menu)
@@ -45,7 +45,10 @@ class MemberViewController: UIViewController, MenuControllerDelegate {
         SideMenuManager.default.addPanGestureToPresent(toView: view)
         
         
+        
     }
+    
+
     
     
     func didSelectMenuItem(named: SideMenuItem) {
@@ -237,20 +240,20 @@ extension MemberViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MemberCell
         
-        if Auth.auth().currentUser != nil{
-                //let store = Storage.storage()
-            let url = "\(members[indexPath.row].PictureURL)"
-            
-            let Ref = Storage.storage().reference(forURL: url)
-            Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if error != nil {
-                    print("Error: Could not download file")
-                } else {
-                    cell.avatarView?.image = UIImage(data: data!)
-                    cell.avatarView?.makeRounded()
-                }
-            }
-        }
+//        if Auth.auth().currentUser != nil{
+//                //let store = Storage.storage()
+//            let url = "\(members[indexPath.row].PictureURL)"
+//
+//            let Ref = Storage.storage().reference(forURL: url)
+//            Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                if error != nil {
+//                    print("Error: Could not download file")
+//                } else {
+//                    cell.avatarView?.image = UIImage(data: data!)
+//                    cell.avatarView?.makeRounded()
+//                }
+//            }
+//        }
         
         if filter == "FirstName" {
             cell.nameLabel?.text = "\(members[indexPath.row].FirstName) \(members[indexPath.row].LastName)"
@@ -266,6 +269,10 @@ extension MemberViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Total \(members.count) members"
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
@@ -279,26 +286,27 @@ extension MemberViewController: UITableViewDelegate {
             vc.members = members[indexPath.row]
             
             
-            if Auth.auth().currentUser != nil{
-                    //let store = Storage.storage()
-                let url = "\(members[indexPath.row].PictureURL)"
-                
-                let Ref = Storage.storage().reference(forURL: url)
-                Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                    if error != nil {
-                        print("Error: Could not download file")
-                    } else {
-                        vc.imageView.image = UIImage(data: data!)
-                    }
-                }
-            }
-            
+//            if Auth.auth().currentUser != nil{
+//                    //let store = Storage.storage()
+//                let url = "\(members[indexPath.row].PictureURL)"
+//
+//                let Ref = Storage.storage().reference(forURL: url)
+//                Ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                    if error != nil {
+//                        print("Error: Could not download file")
+//                    } else {
+//                        vc.imageView.image = UIImage(data: data!)
+//                    }
+//                }
+//            }
+//
             
             navigationController?.pushViewController(vc, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
 
     }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
             return true
